@@ -1,0 +1,156 @@
+{
+  "cleaning": {
+    "source_rows": 1067371,
+    "source_duplicate_rows_all_columns": 34335,
+    "source_customer_id_missing_rows": 243007,
+    "source_customer_id_missing_rate": 0.22766872999172733,
+    "excluded_non_product_rows": 5825,
+    "excluded_non_product_amount": -98112.70199999996,
+    "excluded_zero_quantity_or_nonpositive_price_rows": 6207,
+    "excluded_duplicate_rows_after_basic_filters": 34037,
+    "excluded_duplicate_amount": 456777.81,
+    "ambiguous_same_day_different_timestamp_rows_kept": 2,
+    "ambiguous_same_day_different_timestamp_amount_kept": 33.6,
+    "duplicate_policy": "仅删除六列键完全相同且时间戳也相同的行；同发票同商品但时间戳不同的 2 行保留",
+    "cleaned_rows": 1021335,
+    "cleaned_row_retention_rate": 0.9568697294567681,
+    "cleaned_customer_id_missing_rows": 227172,
+    "cleaned_customer_id_missing_rate": 0.22242652998281662,
+    "date_min": "2009-12-01T07:45:00",
+    "date_max": "2011-12-09T12:50:00"
+  },
+  "orders": {
+    "order_rows": 46922,
+    "sale_orders": 39516,
+    "return_orders": 7406,
+    "customers_with_id": 5875,
+    "invoices_with_multiple_timestamps": 83,
+    "max_timestamp_span_minutes": 9.0,
+    "invoices_with_customer_id_conflict": 0,
+    "invoices_with_country_conflict": 0
+  },
+  "financial": {
+    "gross_sales": 19645080.99,
+    "return_amount": 716495.53,
+    "net_revenue": 18928585.46,
+    "return_amount_rate": 0.036472006929608496
+  },
+  "monthly": {
+    "complete_months": 24,
+    "highest_net_revenue_month": "2011-11",
+    "highest_net_revenue": 1426587.54,
+    "lowest_net_revenue_month": "2011-04",
+    "lowest_net_revenue": 482153.6
+  },
+  "repeat": {
+    "customers_with_id": 5852,
+    "eligible_90d_customers": 3562,
+    "repeat_90d_customers": 1476,
+    "repeat_90d_rate": 0.41437394722066256,
+    "observation_end": "2011-12-09T12:50:00",
+    "history_washout_days": 90,
+    "left_censored_customers_excluded": 1694,
+    "definition": "首笔可观测购买前有 90 天历史洗脱、其后有完整 90 天观察窗的客户中，90 天内出现第二张更晚的正向商品发票"
+  },
+  "rfm": {
+    "reference_date": "2011-12-10",
+    "entity_count": 5852,
+    "single_purchase_customers": 1618,
+    "single_purchase_share": 0.27648667122351334,
+    "recency_quantiles_days": [
+      20.0,
+      59.0,
+      187.0,
+      409.0
+    ],
+    "frequency_quantiles_orders": [
+      1.0,
+      2.0,
+      4.0,
+      8.0
+    ],
+    "monetary_quantiles_net_revenue": [
+      271.77,
+      590.692,
+      1178.3139999999999,
+      2827.1580000000017
+    ],
+    "winsor_limits_monetary": [
+      35.553000000000004,
+      26490.31379999994
+    ],
+    "limitations": [
+      "RFM 是历史价值描述，不预测营销响应率；M 使用客户净收入并把负值截为 0 后评分",
+      "单次购买客户单列为 One-time，不把一次交易强行解释为稳定 RFM 行为",
+      "客户编号缺失的交易不进入 RFM"
+    ]
+  },
+  "top_segments": [
+    {
+      "segment": "At risk",
+      "customers": 619,
+      "gross_purchase_value": 1435137.31,
+      "net_customer_revenue": 1356208.01,
+      "avg_recency_days": 359.19,
+      "avg_frequency_orders": 5.67,
+      "avg_monetary_value": 2190.97,
+      "customer_share": 0.105776,
+      "gross_value_share": 0.084083,
+      "net_value_share": 0.0829,
+      "priority": 1,
+      "proposed_action": "高历史价值沉默召回",
+      "validation_plan": "随机保留对照组；比较 30 天回购率与净收入/触达客户"
+    },
+    {
+      "segment": "One-time",
+      "customers": 1618,
+      "gross_purchase_value": 555999.97,
+      "net_customer_revenue": 542627.8,
+      "avg_recency_days": 352.58,
+      "avg_frequency_orders": 1.0,
+      "avg_monetary_value": 335.5,
+      "customer_share": 0.276487,
+      "gross_value_share": 0.032576,
+      "net_value_share": 0.033169,
+      "priority": 2,
+      "proposed_action": "首笔可观测购买后第二单培育",
+      "validation_plan": "按该笔购买后 7/14 天随机分组并保留不触达对照；比较 90 天复购率"
+    },
+    {
+      "segment": "Champions",
+      "customers": 1278,
+      "gross_purchase_value": 11598582.76,
+      "net_customer_revenue": 11306350.98,
+      "avg_recency_days": 20.11,
+      "avg_frequency_orders": 17.06,
+      "avg_monetary_value": 8846.91,
+      "customer_share": 0.218387,
+      "gross_value_share": 0.67955,
+      "net_value_share": 0.691119,
+      "priority": 3,
+      "proposed_action": "忠诚维护与流失预警",
+      "validation_plan": "监控 30 天未购占比、复购间隔和退货金额率"
+    },
+    {
+      "segment": "Loyal",
+      "customers": 655,
+      "gross_purchase_value": 1818397.81,
+      "net_customer_revenue": 1782691.72,
+      "avg_recency_days": 83.83,
+      "avg_frequency_orders": 7.87,
+      "avg_monetary_value": 2721.67,
+      "customer_share": 0.111928,
+      "gross_value_share": 0.106538,
+      "net_value_share": 0.10897,
+      "priority": 4,
+      "proposed_action": "稳定复购维护",
+      "validation_plan": "比较触达前后购买间隔，并保留随机对照"
+    }
+  ],
+  "limitations": [
+    "客户编号缺失交易保留在全盘收入，但不进入复购和 RFM",
+    "数据没有营销触达、成本和随机对照，策略效果未实际验证",
+    "2011-12 只有 9 天，月度极值比较排除该不完整月",
+    "公开数据来自一家英国零售商，不能直接外推到其他行业或企业"
+  ]
+}

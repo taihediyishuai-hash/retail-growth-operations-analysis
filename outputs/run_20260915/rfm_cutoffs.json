@@ -1,0 +1,33 @@
+{
+  "reference_date": "2011-12-10",
+  "entity_count": 5852,
+  "single_purchase_customers": 1618,
+  "single_purchase_share": 0.27648667122351334,
+  "recency_quantiles_days": [
+    20.0,
+    59.0,
+    187.0,
+    409.0
+  ],
+  "frequency_quantiles_orders": [
+    1.0,
+    2.0,
+    4.0,
+    8.0
+  ],
+  "monetary_quantiles_net_revenue": [
+    271.77,
+    590.692,
+    1178.3139999999999,
+    2827.1580000000017
+  ],
+  "winsor_limits_monetary": [
+    35.553000000000004,
+    26490.31379999994
+  ],
+  "limitations": [
+    "RFM 是历史价值描述，不预测营销响应率；M 使用客户净收入并把负值截为 0 后评分",
+    "单次购买客户单列为 One-time，不把一次交易强行解释为稳定 RFM 行为",
+    "客户编号缺失的交易不进入 RFM"
+  ]
+}

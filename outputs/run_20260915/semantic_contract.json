@@ -1,0 +1,45 @@
+{
+  "decision": "在触达资源有限的情况下，优先覆盖哪些客户群，并用什么指标验证召回与复购策略",
+  "main_table": "online_retail_II",
+  "grain": "一行一张发票中的一个商品行",
+  "date_field": "InvoiceDate",
+  "entity_fields": {
+    "invoice": "Invoice",
+    "customer": "Customer ID",
+    "product": "StockCode"
+  },
+  "metric_fields": {
+    "quantity": "Quantity",
+    "unit_price": "Price"
+  },
+  "time_window": {
+    "observed": ["2009-12-01", "2011-12-09"],
+    "complete_month_trend": ["2009-12-01", "2011-11-30"],
+    "rfm_reference_date": "2011-12-10",
+    "repeat_window_days": 90
+  },
+  "baseline": "月度趋势使用完整月份；90 天复购仅纳入首笔可观测购买前拥有 90 天历史洗脱且其后拥有完整 90 天观察窗的客户",
+  "exclusions": [
+    "Price <= 0 或 Quantity = 0",
+    "邮费、坏账、手工调整、折扣等非商品 StockCode",
+    "Invoice、StockCode、Quantity、InvoiceDate、Price、Customer ID 六列完全重复的采集行",
+    "客户编号缺失的交易仅保留在全盘收入，排除出用户级复购与 RFM",
+    "只有退货记录、没有正向购买订单的客户排除出 RFM"
+  ],
+  "assumptions": [
+    "Quantity < 0 代表退货或取消冲回",
+    "正向商品发票代表一次购买订单",
+    "同一发票内客户编号一致时，以发票号作为订单主键；本数据没有出现发票内客户编号冲突",
+    "该公开数据没有营销触达、成本和随机对照，运营动作只作为待验证方案"
+  ],
+  "quality": {
+    "outlier_z": 4,
+    "warning_z": 3,
+    "delay_exclusion_minutes": 0
+  },
+  "stop_conditions": [
+    "客户编号缺失率过高时，用户指标必须披露覆盖率",
+    "末端 cohort 未满 90 天时不得进入 90 天复购率",
+    "没有触达与对照数据时不得声称策略带来提升"
+  ]
+}

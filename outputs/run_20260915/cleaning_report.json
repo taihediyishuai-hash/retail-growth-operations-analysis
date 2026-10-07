@@ -1,0 +1,20 @@
+{
+  "source_rows": 1067371,
+  "source_duplicate_rows_all_columns": 34335,
+  "source_customer_id_missing_rows": 243007,
+  "source_customer_id_missing_rate": 0.22766872999172733,
+  "excluded_non_product_rows": 5825,
+  "excluded_non_product_amount": -98112.70199999996,
+  "excluded_zero_quantity_or_nonpositive_price_rows": 6207,
+  "excluded_duplicate_rows_after_basic_filters": 34037,
+  "excluded_duplicate_amount": 456777.81,
+  "ambiguous_same_day_different_timestamp_rows_kept": 2,
+  "ambiguous_same_day_different_timestamp_amount_kept": 33.6,
+  "duplicate_policy": "仅删除六列键完全相同且时间戳也相同的行；同发票同商品但时间戳不同的 2 行保留",
+  "cleaned_rows": 1021335,
+  "cleaned_row_retention_rate": 0.9568697294567681,
+  "cleaned_customer_id_missing_rows": 227172,
+  "cleaned_customer_id_missing_rate": 0.22242652998281662,
+  "date_min": "2009-12-01T07:45:00",
+  "date_max": "2011-12-09T12:50:00"
+}

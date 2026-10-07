@@ -1,0 +1,47 @@
+{
+  "decision": "决定召回与复购运营资源的优先客户群和验收指标",
+  "backward_steps": [
+    {
+      "step": 1,
+      "question": "哪些客户群同时具备历史价值和流失风险？",
+      "needed_fields": ["Customer ID", "Invoice", "InvoiceDate", "Quantity", "Price"],
+      "available": true,
+      "quality_status": "confirmed",
+      "fallback": "客户编号缺失记录仅进入全盘收入",
+      "max_claim_level": "L1"
+    },
+    {
+      "step": 2,
+      "question": "首购客户在 90 天内是否发生第二次购买？",
+      "needed_fields": ["Customer ID", "Invoice", "InvoiceDate"],
+      "available": true,
+      "quality_status": "confirmed",
+      "fallback": "不成熟首购 cohort 进入右删失区",
+      "max_claim_level": "L1"
+    },
+    {
+      "step": 3,
+      "question": "哪些建议可以转化为可验证的运营动作？",
+      "needed_fields": ["历史交易", "触达记录", "随机对照", "营销成本"],
+      "available": false,
+      "quality_status": "missing",
+      "fallback": "只输出分群名单定义、实验设计与验收指标，不声称实际提升",
+      "max_claim_level": "L3"
+    }
+  ],
+  "selected_methods": ["retention", "segmentation_rfm"],
+  "selected_charts": ["monthly_kpi_trend", "cohort_repeat_heatmap", "rfm_value_share", "action_priority_matrix"],
+  "contract": {
+    "metric": {
+      "net_revenue": "正向商品金额减负向退货或取消金额",
+      "repeat_90d_rate": "拥有完整观察窗的首购客户中，首购后 90 天内完成第二张正向商品发票的客户占比"
+    },
+    "grain": "交易行清洗后聚合到订单与客户",
+    "baseline_or_control": "完整月趋势与成熟首购 cohort；无营销处理组或随机对照",
+    "exclusions": ["非商品行", "零价行", "完全重复行", "用户指标中的缺失客户编号"],
+    "assumptions": ["负数量为退货或取消", "参考日固定为 2011-12-10"]
+  },
+  "missing_data": ["营销触达", "活动成本", "随机对照", "商品成本", "访问与加购事件"],
+  "stop_conditions": ["不把 RFM 当响应预测", "不把方案写成真实业务提升"]
+}
+

@@ -1,0 +1,134 @@
+{
+  "claims": [
+    {
+      "claim_id": "C001",
+      "statement": "原始数据包含 1,067,371 行；清洗后保留 1,021,335 行。",
+      "level": "L0",
+      "status": "fact",
+      "evidence_ids": ["E001", "E002"],
+      "scope": {"date": "2009-12-01..2011-12-09", "dimension": null},
+      "confidence": "high",
+      "limitations": ["数据来自一家英国零售商，不能直接外推到其他企业"]
+    },
+    {
+      "claim_id": "C002",
+      "statement": "清洗删除 34,037 条六列键完全重复记录，对应金额 456,777.81；另保留 2 条同日但时间戳不同的近重复记录，敏感性金额为 33.60。",
+      "level": "L0",
+      "status": "fact",
+      "evidence_ids": ["E002"],
+      "scope": {"date": "2009-12-01..2011-12-09", "dimension": "数据质量"},
+      "confidence": "high",
+      "limitations": ["完全重复记录是否一定是采集重复仍依赖源数据业务语义"]
+    },
+    {
+      "claim_id": "C003",
+      "statement": "全期毛销售额为 19,645,080.99，退货或取消金额为 716,495.53，净收入为 18,928,585.46，退货金额率为 3.65%；七项可加总指标均通过明细对账。",
+      "level": "L0",
+      "status": "fact",
+      "evidence_ids": ["E004", "E005"],
+      "scope": {"date": "2009-12-01..2011-12-09", "dimension": null},
+      "confidence": "high",
+      "limitations": ["净收入按商品行金额扣除负数量冲回，不等同于会计确认收入"]
+    },
+    {
+      "claim_id": "C004",
+      "statement": "清洗后交易行中 22.24% 缺少客户编号，共有 3,046 张不可识别客户的发票；可识别发票覆盖 86.42% 的净收入。",
+      "level": "L0",
+      "status": "fact",
+      "evidence_ids": ["E003"],
+      "scope": {"date": "2009-12-01..2011-12-09", "dimension": "客户标识覆盖"},
+      "confidence": "high",
+      "limitations": ["复购和 RFM 只代表可识别客户子集，缺失机制未知"]
+    },
+    {
+      "claim_id": "C005",
+      "statement": "按发票号重建 46,922 张订单；83 张发票包含多个时间戳，最大跨度 9 分钟，未发现发票内客户编号或国家冲突。",
+      "level": "L0",
+      "status": "fact",
+      "evidence_ids": ["E013"],
+      "scope": {"date": "2009-12-01..2011-12-09", "dimension": "订单主键"},
+      "confidence": "high",
+      "limitations": ["发票号被视为订单主键，依赖该公开数据集的编码语义"]
+    },
+    {
+      "claim_id": "C006",
+      "statement": "同时具备首笔可观测购买前后完整观察窗的 3,562 名客户中，1,476 名在该笔购买后 90 天内出现第二张更晚的正向发票，历史复购率为 41.44%。",
+      "level": "L0",
+      "status": "fact",
+      "evidence_ids": ["E001", "E006"],
+      "scope": {"date": "2009-12-01..2011-12-09", "dimension": "双向成熟客户"},
+      "confidence": "high",
+      "limitations": ["缺少 2009-12-01 之前的购买历史，只能识别首笔可观测购买", "该数值是历史观察率，不是运营方案带来的增量", "第二张正向发票不代表扣除后续退货后的正向价值"]
+    },
+    {
+      "claim_id": "C007",
+      "statement": "18 个双向成熟的首笔可观测购买月 cohort 加权 90 天复购率为 41.19%；最高为 2011-07 的 55.45%，Wilson 区间为 45.73% 至 64.76%；最低为 2010-12 的 15.79%，区间为 9.27% 至 25.60%。",
+      "level": "L1",
+      "status": "comparison",
+      "evidence_ids": ["E007"],
+      "scope": {"date": "2010-03..2011-08", "dimension": "首购月 cohort"},
+      "confidence": "medium",
+      "limitations": ["成熟 cohort 规模为 72 至 441，最大相差 6.12 倍，加权均值可能由大 cohort 主导", "缺少渠道、活动暴露与客户属性，极值比较不构成稳定趋势、运营响应或机制证据"]
+    },
+    {
+      "claim_id": "C008",
+      "statement": "完整月份中净收入最高为 2011-11 的 1,426,587.54，最低为 2011-04 的 482,153.60；2011-11 同比为 2.29%。",
+      "level": "L1",
+      "status": "comparison",
+      "evidence_ids": ["E012"],
+      "scope": {"date": "2009-12..2011-11", "dimension": "完整月份"},
+      "confidence": "medium",
+      "limitations": ["只有两年数据且缺少促销日历，不能把月度差异解释为营销效果"]
+    },
+    {
+      "claim_id": "C009",
+      "statement": "Champions 有 1,278 人，占 RFM 客户 21.84%，对应 69.11% 的 RFM 客户净收入；Champions 与 Loyal 合计占客户 33.03%，对应净收入 80.01%。",
+      "level": "L1",
+      "status": "comparison",
+      "evidence_ids": ["E008", "E011"],
+      "scope": {"date": "RFM 参考日 2011-12-10", "dimension": "RFM 分层"},
+      "confidence": "high",
+      "limitations": ["价值集中度是历史结构描述，不代表未来响应率"]
+    },
+    {
+      "claim_id": "C010",
+      "statement": "At risk 有 619 人，占 RFM 客户 10.58%，对应净收入 8.29%，平均距末次购买 359.19 天，平均正向订单数 5.67。",
+      "level": "L1",
+      "status": "comparison",
+      "evidence_ids": ["E009"],
+      "scope": {"date": "RFM 参考日 2011-12-10", "dimension": "At risk"},
+      "confidence": "high",
+      "limitations": ["At risk 是规则分层标签，不是经过验证的流失预测"]
+    },
+    {
+      "claim_id": "C011",
+      "statement": "One-time 有 1,618 人，占 RFM 客户 27.65%，对应净收入 3.32%。",
+      "level": "L1",
+      "status": "comparison",
+      "evidence_ids": ["E010"],
+      "scope": {"date": "RFM 参考日 2011-12-10", "dimension": "One-time"},
+      "confidence": "high",
+      "limitations": ["低历史价值不等于低增量潜力，后者需要随机实验验证"]
+    },
+    {
+      "claim_id": "C012",
+      "statement": "RFM 覆盖 5,852 名至少有一张正向订单的客户，净收入分母为 16,359,483.57；另有 23 名客户只有退货记录，合计净额 -1,406.13，因无法定义最近购买日与购买频次而被排除。",
+      "level": "L0",
+      "status": "fact",
+      "evidence_ids": ["E011", "E015"],
+      "scope": {"date": "RFM 参考日 2011-12-10", "dimension": "RFM 人群口径"},
+      "confidence": "high",
+      "limitations": ["RFM 净收入分母与全部可识别客户净收入的差异来自此排除规则"]
+    },
+    {
+      "claim_id": "C013",
+      "statement": "可将 At risk 召回与 One-time 二购培育作为两个独立随机对照实验的设计提案，并以复购、单客净收入及退货等护栏共同验收；当前不能声称策略已产生业务提升。",
+      "level": "L1",
+      "status": "proposal",
+      "evidence_ids": ["E009", "E010", "E014", "E016"],
+      "scope": {"date": "后续试验", "dimension": "运营动作"},
+      "confidence": "medium",
+      "limitations": ["尚未确定实验单位、唯一主指标与主时间窗、基线率、样本量、分流比例、MDE、alpha、统计功效、周期、停止规则、成本与毛利"]
+    }
+  ]
+}

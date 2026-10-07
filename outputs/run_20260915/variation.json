@@ -1,0 +1,12 @@
+{
+  "signature": {
+    "primary_lens": "opportunity",
+    "visual_structure": "layered-disclosure",
+    "chart_grammar": ["baseline-overlay", "distribution", "matrix"],
+    "layout_rhythm": "card-based",
+    "recommendation_form": "实验设计"
+  },
+  "previous_signature": null,
+  "diff_from_previous": "首次运行；以复购机会与可验证动作作为主线"
+}
+

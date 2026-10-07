@@ -1,0 +1,9 @@
+priority,segment,customers,net_value_share_pct,proposed_action,validation_plan
+1,At risk,619,8.29,高历史价值沉默召回,随机保留对照组；比较 30 天回购率与净收入/触达客户
+2,One-time,1618,3.32,首笔可观测购买后第二单培育,按该笔购买后 7/14 天随机分组并保留不触达对照；比较 90 天复购率
+3,Champions,1278,69.11,忠诚维护与流失预警,监控 30 天未购占比、复购间隔和退货金额率
+4,Loyal,655,10.9,稳定复购维护,比较触达前后购买间隔，并保留随机对照
+5,New & promising,640,3.64,新客 onboarding,比较 30/60/90 天第二单率
+6,Potential loyalist,399,1.58,培育购买频次,比较订单频次与客单价护栏
+7,Needs attention,406,2.67,低成本提醒,设置触达频控，以净收入和退订率为护栏
+8,Hibernating,237,0.49,控制触达成本,仅在预估毛利覆盖触达成本时进入实验

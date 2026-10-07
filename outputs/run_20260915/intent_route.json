@@ -1,0 +1,21 @@
+{
+  "decision": "识别优先召回与培育的人群，并定义可复核的复购验收口径",
+  "primary_method": "retention",
+  "secondary_methods": ["segmentation"],
+  "dependency_order": ["quality", "retention", "segmentation"],
+  "reason": "成熟 cohort 回答复购表现，RFM 回答当前资源优先级；月度趋势作为背景，不加载漏斗、归因或因果方法",
+  "required_fields": [
+    {"role": "date", "field": "InvoiceDate", "status": "available"},
+    {"role": "entity", "field": "Customer ID", "status": "available"},
+    {"role": "order", "field": "Invoice", "status": "available"},
+    {"role": "value", "field": "Quantity * Price", "status": "available"},
+    {"role": "treatment", "field": "营销触达与对照", "status": "missing"}
+  ],
+  "questions": [],
+  "stop_conditions": ["不成熟 cohort 不参与 90 天指标", "没有对照不做因果效果结论"],
+  "fallback_if_missing": [
+    {"missing": "客户编号", "fallback": "只进入全盘收入，不进入客户级指标"},
+    {"missing": "营销触达与对照", "fallback": "输出实验方案，不估计策略增量"}
+  ]
+}
+

@@ -1,0 +1,238 @@
+{
+  "schema_version": "1.0",
+  "run": "outputs/run_20260915",
+  "source": {
+    "file": "data/raw/online_retail_II.csv",
+    "sha256": "32569a66f3842a82b0d8c4d63b263c5d98a76bde5d1f65c6c01bf457e541d3a9",
+    "raw_source": "UCI Online Retail II (CC BY 4.0)"
+  },
+  "evidence": [
+    {
+      "id": "E001",
+      "kind": "source_profile",
+      "file": "data/raw/online_retail_II.csv",
+      "scope": "全表",
+      "source_rows": 1067371,
+      "date_min": "2009-12-01T07:45:00",
+      "date_max": "2011-12-09T12:50:00",
+      "raw_sha256": "32569a66f3842a82b0d8c4d63b263c5d98a76bde5d1f65c6c01bf457e541d3a9",
+      "source": "UCI Online Retail II, CC BY 4.0"
+    },
+    {
+      "id": "E002",
+      "kind": "cleaning_impact",
+      "scope": "全表",
+      "cleaned_rows": 1021335,
+      "rows_retained_percent": 95.69,
+      "exact_duplicates_removed": 34037,
+      "duplicate_amount_removed": 456777.81,
+      "non_product_rows_removed": 5825,
+      "same_day_different_timestamp_rows_kept": 2,
+      "sensitivity_amount": 33.6
+    },
+    {
+      "id": "E003",
+      "kind": "quality_coverage",
+      "scope": "清洗后交易行与发票",
+      "missing_customer_id_rows": 227172,
+      "missing_customer_id_rows_percent": 22.24,
+      "unidentified_invoices": 3046,
+      "identified_net_revenue": 16358077.44,
+      "unidentified_net_revenue": 2570508.02,
+      "identified_net_revenue_percent": 86.42,
+      "quality_status": "DEGRADED"
+    },
+    {
+      "id": "E004",
+      "kind": "reconciliation",
+      "scope": "月度可加总指标与全表合计",
+      "status": "pass",
+      "checked": 7,
+      "failed": 0,
+      "net_revenue_stated": 18928585.46,
+      "net_revenue_computed": 18928585.46,
+      "verified": true
+    },
+    {
+      "id": "E005",
+      "kind": "financial_metric",
+      "scope": "2009-12-01..2011-12-09",
+      "gross_sales": 19645080.99,
+      "return_amount": 716495.53,
+      "net_revenue": 18928585.46,
+      "return_amount_rate_percent": 3.65,
+      "sale_orders": 39516
+    },
+    {
+      "id": "E006",
+      "kind": "repeat_metric",
+      "scope": "首笔可观测购买前后均拥有完整 90 天窗口的客户",
+      "eligible_customers": 3562,
+      "repeat_customers": 1476,
+      "repeat_window_days": 90,
+      "repeat_90d_rate_percent": 41.44,
+      "definition": "首笔可观测购买前有 90 天历史洗脱、其后有完整 90 天观察窗的客户中，90 天内出现第二张更晚的正向商品发票"
+    },
+    {
+      "id": "E007",
+      "kind": "cohort_compare",
+      "scope": "18 个双向成熟的首笔可观测购买月 cohort",
+      "mature_cohorts": 18,
+      "repeat_window_days": 90,
+      "weighted_repeat_90d_rate_percent": 41.19,
+      "cohort_size_min": 72,
+      "cohort_size_max": 441,
+      "cohort_size_ratio": 6.12,
+      "highest_cohort": "2011-07",
+      "highest_rate_percent": 55.45,
+      "highest_cohort_size": 101,
+      "highest_wilson_95_percent": [
+        45.73,
+        64.76
+      ],
+      "highest_wilson_low_percent": 45.73,
+      "highest_wilson_high_percent": 64.76,
+      "lowest_cohort": "2010-12",
+      "lowest_rate_percent": 15.79,
+      "lowest_cohort_size": 76,
+      "lowest_wilson_95_percent": [
+        9.27,
+        25.6
+      ],
+      "lowest_wilson_low_percent": 9.27,
+      "lowest_wilson_high_percent": 25.6
+    },
+    {
+      "id": "E008",
+      "kind": "rfm_segment",
+      "scope": "RFM 参考日 2011-12-10",
+      "segment": "Champions",
+      "customers": 1278,
+      "customer_share_percent": 21.84,
+      "gross_purchase_value": 11598582.76,
+      "net_customer_revenue": 11306350.98,
+      "net_value_share_percent": 69.11,
+      "average_recency_days": 20.11,
+      "average_frequency_orders": 17.06
+    },
+    {
+      "id": "E009",
+      "kind": "rfm_segment",
+      "scope": "RFM 参考日 2011-12-10",
+      "segment": "At risk",
+      "customers": 619,
+      "customer_share_percent": 10.58,
+      "gross_purchase_value": 1435137.31,
+      "net_customer_revenue": 1356208.01,
+      "net_value_share_percent": 8.29,
+      "average_recency_days": 359.19,
+      "average_frequency_orders": 5.67
+    },
+    {
+      "id": "E010",
+      "kind": "rfm_segment",
+      "scope": "RFM 参考日 2011-12-10",
+      "segment": "One-time",
+      "customers": 1618,
+      "customer_share_percent": 27.65,
+      "gross_purchase_value": 555999.97,
+      "net_customer_revenue": 542627.8,
+      "net_value_share_percent": 3.32,
+      "average_recency_days": 352.58,
+      "frequency_orders": 1
+    },
+    {
+      "id": "E011",
+      "kind": "rfm_concentration",
+      "scope": "RFM 参考日 2011-12-10",
+      "champions_and_loyal_customer_share_percent": 33.03,
+      "champions_and_loyal_net_value_share_percent": 80.01,
+      "rfm_entity_count": 5852
+    },
+    {
+      "id": "E012",
+      "kind": "monthly_compare",
+      "scope": "完整月份与同月同比",
+      "complete_months": 24,
+      "highest_month": "2011-11",
+      "highest_month_net_revenue": 1426587.54,
+      "lowest_month": "2011-04",
+      "lowest_month_net_revenue": 482153.6,
+      "november_2011_yoy_percent": 2.29
+    },
+    {
+      "id": "E013",
+      "kind": "order_key_quality",
+      "scope": "Invoice 订单主键",
+      "invoice_count": 46922,
+      "invoices_with_multiple_timestamps": 83,
+      "max_timestamp_span_minutes": 9.0,
+      "customer_id_conflicts": 0,
+      "country_conflicts": 0
+    },
+    {
+      "id": "E014",
+      "kind": "decision_boundary",
+      "scope": "运营动作验证",
+      "missing_fields": [
+        "营销触达",
+        "随机对照",
+        "营销成本",
+        "毛利",
+        "访问与加购事件"
+      ],
+      "max_supported_statement": "可以给出人群优先级和实验设计，不能声称策略已经提升复购或净收入"
+    },
+    {
+      "id": "E015",
+      "kind": "rfm_scoring_policy",
+      "scope": "RFM 参考日 2011-12-10",
+      "recency_quantiles_days": [
+        20.0,
+        59.0,
+        187.0,
+        409.0
+      ],
+      "frequency_quantiles_orders": [
+        1.0,
+        2.0,
+        4.0,
+        8.0
+      ],
+      "monetary_quantiles_net_revenue": [
+        271.77,
+        590.692,
+        1178.3139999999999,
+        2827.1580000000017
+      ],
+      "winsor_limits_monetary": [
+        35.553000000000004,
+        26490.31379999994
+      ],
+      "negative_net_customers_scored_at_zero": 4,
+      "rfm_net_revenue_denominator": 16359483.57,
+      "return_only_customers_excluded": 23,
+      "return_only_net_revenue_excluded": -1406.13,
+      "max_customer_gross_purchase": 580987.04,
+      "max_customer_net_revenue": 578408.64,
+      "note": "M 使用客户净收入，负值按 0 进入评分；展示表仍保留原始毛购买额和净收入"
+    },
+    {
+      "id": "E016",
+      "kind": "experiment_design",
+      "scope": "At risk 与 One-time 待验证运营方案",
+      "treatment_design": "按人群与首笔可观测购买日期分层随机，保留不触达对照组",
+      "primary_metrics": [
+        "30 天回购率",
+        "90 天复购率",
+        "净收入/触达客户"
+      ],
+      "guardrails": [
+        "退货金额率",
+        "退订率",
+        "单客优惠成本"
+      ],
+      "status": "design_only_no_observed_result"
+    }
+  ]
+}

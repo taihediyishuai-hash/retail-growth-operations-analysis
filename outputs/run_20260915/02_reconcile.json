@@ -1,0 +1,185 @@
+{
+  "op": "reconcile",
+  "schema_version": "1.0",
+  "header_row": 1,
+  "label_column": "month",
+  "value_columns": [
+    "gross_sales",
+    "return_amount",
+    "net_revenue",
+    "sales_items",
+    "return_items",
+    "sale_orders",
+    "new_customers"
+  ],
+  "summary_rows": [
+    {
+      "row": 27,
+      "label": "合计",
+      "scope_type": "total"
+    }
+  ],
+  "reconciliations": [
+    {
+      "id": "R001",
+      "kind": "reconciliation",
+      "scope_type": "total",
+      "scope": "全表明细",
+      "column": "gross_sales",
+      "unit": "raw",
+      "stated": 19645080.99,
+      "computed": 19645080.99,
+      "diff": 0.0,
+      "diff_rate": 0.0,
+      "status": "consistent",
+      "verified": true,
+      "source": {
+        "row": 27,
+        "label": "合计",
+        "detail_rows": 25
+      }
+    },
+    {
+      "id": "R002",
+      "kind": "reconciliation",
+      "scope_type": "total",
+      "scope": "全表明细",
+      "column": "return_amount",
+      "unit": "raw",
+      "stated": 716495.53,
+      "computed": 716495.53,
+      "diff": 0.0,
+      "diff_rate": 0.0,
+      "status": "consistent",
+      "verified": true,
+      "source": {
+        "row": 27,
+        "label": "合计",
+        "detail_rows": 25
+      }
+    },
+    {
+      "id": "R003",
+      "kind": "reconciliation",
+      "scope_type": "total",
+      "scope": "全表明细",
+      "column": "net_revenue",
+      "unit": "raw",
+      "stated": 18928585.46,
+      "computed": 18928585.46,
+      "diff": 0.0,
+      "diff_rate": 0.0,
+      "status": "consistent",
+      "verified": true,
+      "source": {
+        "row": 27,
+        "label": "合计",
+        "detail_rows": 25
+      }
+    },
+    {
+      "id": "R004",
+      "kind": "reconciliation",
+      "scope_type": "total",
+      "scope": "全表明细",
+      "column": "sales_items",
+      "unit": "raw",
+      "stated": 11187826.0,
+      "computed": 11187826.0,
+      "diff": 0.0,
+      "diff_rate": 0.0,
+      "status": "consistent",
+      "verified": true,
+      "source": {
+        "row": 27,
+        "label": "合计",
+        "detail_rows": 25
+      }
+    },
+    {
+      "id": "R005",
+      "kind": "reconciliation",
+      "scope_type": "total",
+      "scope": "全表明细",
+      "column": "return_items",
+      "unit": "raw",
+      "stated": 467740.0,
+      "computed": 467740.0,
+      "diff": 0.0,
+      "diff_rate": 0.0,
+      "status": "consistent",
+      "verified": true,
+      "source": {
+        "row": 27,
+        "label": "合计",
+        "detail_rows": 25
+      }
+    },
+    {
+      "id": "R006",
+      "kind": "reconciliation",
+      "scope_type": "total",
+      "scope": "全表明细",
+      "column": "sale_orders",
+      "unit": "raw",
+      "stated": 39516.0,
+      "computed": 39516.0,
+      "diff": 0.0,
+      "diff_rate": 0.0,
+      "status": "consistent",
+      "verified": true,
+      "source": {
+        "row": 27,
+        "label": "合计",
+        "detail_rows": 25
+      }
+    },
+    {
+      "id": "R007",
+      "kind": "reconciliation",
+      "scope_type": "total",
+      "scope": "全表明细",
+      "column": "new_customers",
+      "unit": "raw",
+      "stated": 5852.0,
+      "computed": 5852.0,
+      "diff": 0.0,
+      "diff_rate": 0.0,
+      "status": "consistent",
+      "verified": true,
+      "source": {
+        "row": 27,
+        "label": "合计",
+        "detail_rows": 25
+      }
+    }
+  ],
+  "skipped": [],
+  "excluded_rows": [
+    {
+      "row": 27,
+      "kind": "total",
+      "label": "合计"
+    }
+  ],
+  "master_check": {
+    "status": "pass",
+    "checked": 7,
+    "failed": 0,
+    "failed_ids": [],
+    "verdict": "通过：所有可机器验证的汇总项都与明细一致。"
+  },
+  "limitations": [
+    "只做加总对账：比率行（占比/同比/率）与比率列不参与，已列入 skipped。",
+    "对账只证明「明细之和与汇总一致」，证明不了口径是否合理、明细行本身是否该被排除。",
+    "嵌套小计以明细行为基准；若子小计与明细不一致，父子层级会同时报出，需要人工定位是哪一层错。",
+    "不解析「1.2万」「3亿」这类带中文数量级的单元格，这类表格请先规范成纯数值。",
+    "多区块堆叠的表会同时尝试「全表明细」与「紧邻区块」两种口径，任一成立即视为对上。"
+  ],
+  "sheet": "monthly_kpis_with_total",
+  "file": {
+    "path": "/home/abcd/code/秋招/retail-growth-operations-analysis/outputs/run_20260915/tables/monthly_kpis_with_total.csv",
+    "name": "monthly_kpis_with_total.csv",
+    "sha256": "adfd0444d6ba3f93de9c41a7644dbba6e8a4aa834b4760c3ceab2d28ccc2a238"
+  }
+}

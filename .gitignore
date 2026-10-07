@@ -1,0 +1,24 @@
+# Large reproducible data files
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*.db
+data/processed/orders.csv
+
+# Runtime files
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.streamlit/
+
+# Local caches
+.cache/
+
+# Private job-search materials
+docs/interview_guide.md
+docs/resume_project.md
+docs/claim-evidence-ledger.json
+docs/project_brief.md
+
+# Internal review artifacts
+outputs/run_*/agents/
